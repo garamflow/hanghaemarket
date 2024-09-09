@@ -1,6 +1,7 @@
 package com.github.garamflow.hanghaemarket.controller;
 
 import com.github.garamflow.hanghaemarket.domain.Item;
+import com.github.garamflow.hanghaemarket.dto.AddItemRequest;
 import com.github.garamflow.hanghaemarket.dto.ItemResponse;
 import com.github.garamflow.hanghaemarket.dto.UpdateItemRequest;
 import com.github.garamflow.hanghaemarket.service.ItemService;
@@ -21,8 +22,8 @@ public class ItemController {
     private final ItemService itemService;
 
     @PostMapping
-    public ResponseEntity<Item> createItem(@RequestBody Item item) {
-        Item createdItem = itemService.createItem(item);
+    public ResponseEntity<Item> createItem(@RequestBody AddItemRequest reqeust) {
+        Item createdItem = itemService.createItem(reqeust.toItem());
         return ResponseEntity.status(HttpStatus.CREATED).body(createdItem);
     }
 

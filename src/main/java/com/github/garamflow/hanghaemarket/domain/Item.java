@@ -8,6 +8,7 @@ import lombok.NoArgsConstructor;
 @Entity
 @Getter
 @NoArgsConstructor
+@Builder
 public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -24,15 +25,6 @@ public class Item {
 
     @Column
     private int price;
-
-    @Builder
-    public Item(Long id, String username, String title, String content, int price) {
-        this.id = id;
-        this.username = username;
-        this.title = title;
-        this.content = content;
-        this.price = price;
-    }
 
     public void update(String title, String content) {
         this.title = title;
